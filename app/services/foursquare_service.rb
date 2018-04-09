@@ -22,7 +22,7 @@ class FoursquareService
     JSON.parse(resp.body)["response"]["friends"]["items"]
   end
 
-  def foursquare(zipcode)
+  def foursquare(zipcode,query)
     client_id = "CO3LIXJPH1LYAC5OOTLKLJE334NVDIYG24KUFOVEQ22WVYDP"
     client_secret = "0NNKMRWRYLCKLPSEE3G10I33WV0BTYXEN2JCJ41TVKKWB52Y"
 
@@ -31,7 +31,7 @@ class FoursquareService
       req.params['client_secret'] = client_secret
       req.params['v'] = '20160201'
       req.params['near'] = zipcode
-      req.params['query'] = 'coffee shop'
+      req.params['query'] = query
     end
 
     body = JSON.parse(@resp.body)

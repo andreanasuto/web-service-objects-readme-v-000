@@ -10,6 +10,6 @@ class SearchesController < ApplicationController
 
   def foursquare
     foursquare_initiation = FoursquareService.new
-    foursquare_initiation.foursquare(params[:zipcode], coffee)
+    foursquare_initiation.foursquare(params[:zipcode])
   end
 end

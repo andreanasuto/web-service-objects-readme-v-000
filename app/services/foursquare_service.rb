@@ -22,7 +22,7 @@ class FoursquareService
     JSON.parse(resp.body)["response"]["friends"]["items"]
   end
 
-  def foursquare(zipcode,query)
+  def foursquare(zipcode, query)
     client_id = "CO3LIXJPH1LYAC5OOTLKLJE334NVDIYG24KUFOVEQ22WVYDP"
     client_secret = "0NNKMRWRYLCKLPSEE3G10I33WV0BTYXEN2JCJ41TVKKWB52Y"
 
@@ -33,18 +33,6 @@ class FoursquareService
       req.params['near'] = zipcode
       req.params['query'] = query
     end
-
-    body = JSON.parse(@resp.body)
-
-    if @resp.success?
-      @venues = body["response"]["venues"]
-    else
-      @error = body["meta"]["errorDetail"]
-    end
-    render 'search'
-
-    rescue Faraday::TimeoutError
-      @error = "There was a timeout. Please try again."
-      render 'search'
+    
   end
 end
